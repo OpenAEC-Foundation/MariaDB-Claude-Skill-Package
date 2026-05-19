@@ -50,6 +50,16 @@ Observations and findings captured during MariaDB skill package development.
 
 ---
 
+## L-009 : Slow-query-log variables renamed in 10.11+ (2026-05-20)
+
+- **Context** : Batch B-09 E-04 slow-queries skill, WebFetch against mariadb.com/kb/en/slow-query-log/.
+- **Observation** : In 10.11+ the slow-query-log variables got `log_slow_*` names : `slow_query_log` to `log_slow_query`, `long_query_time` to `log_slow_query_time`, `slow_query_log_file` to `log_slow_query_file`, `min_examined_row_limit` to `log_slow_min_examined_row_limit`. Old names remain as aliases. `log_slow_admin_statements` deprecated in 11.0+ (replaced by `log_slow_filter=admin`).
+- **Impact** : Skills touching slow-log (errors-slow-queries, impl-performance-tuning) must document both name-sets with version annotation.
+- **Rule** : MariaDB renames system variables across versions while keeping aliases. WebFetch-verify variable names per target version.
+- **Related** : `slave_parallel_threads` default is `0` in ALL versions (not version-dependent as vooronderzoek implied).
+
+---
+
 ## L-008 : Query cache is NOT removed in 11.0+, still present default-OFF (2026-05-19)
 
 - **Context** : Batch B-08 I-06 performance-tuning skill, WebFetch against mariadb.com/docs/server/server-management/variables-and-modes/server-system-variables.
