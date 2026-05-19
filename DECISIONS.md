@@ -64,3 +64,31 @@ Numbered decisions (D-XXX) with rationale. Immutable once recorded — new decis
 - **Decision**: Publish all skill packages under the OpenAEC Foundation GitHub organization.
 - **Rationale**: Centralized, consistent branding. Community ownership. Discoverability.
 - **Consequence**: All repos follow OpenAEC naming conventions and include social preview banners with OpenAEC branding.
+
+---
+
+## D-008 : 30-skill scope (Phase 3 refinement)
+
+- **Date** : 2026-05-19
+- **Decision** : Final skill inventory is 30 skills (core 6, syntax 10, impl 7, errors 5, agents 3). Raw masterplan estimated 28 ; Phase 2 research findings drove two additions and one split.
+- **Rationale** : Vooronderzoek L-002 (no GROUPS frame) reduced one skill scope ; vooronderzoek L-005 (JSON-as-LONGTEXT) cross-cuts but does not add a skill ; D-01 split (procedures-functions vs triggers-events-views) and D-02 add (check-constraints) and D-03 add (defaults-and-sql-modes) drove the +2 net.
+- **Consequence** : Phase 5 runs 11 tmux-orchestration batches (10 batches of 3 + 1 batch of 1). Per-skill agent-prompts to be expanded post user-go.
+- **Reversal cost** : adding or dropping a skill mid-Phase-5 forces re-batching ; do not change mid-execution.
+
+---
+
+## D-009 : Phase 4 topic-research skip-criterion
+
+- **Date** : 2026-05-19
+- **Decision** : Per skill in a batch, if the vooronderzoek section covering its scope has >= 300 words and >= 5 distinct citations, SKIP Phase 4 topic-research for that skill and reference the vooronderzoek section directly in the worker prompt. Otherwise dispatch a Phase 4 topic-research agent.
+- **Rationale** : Docker package L-001 (skip-pattern) ; vooronderzoek depth varies per topic ; redundant research wastes opus-budget.
+- **Consequence** : Per-batch DECISIONS.md entry must record which skills skipped Phase 4 and why (with vooronderzoek section reference).
+
+---
+
+## D-010 : JSON LONGTEXT-alias must appear in every JSON-related skill's Quick Reference
+
+- **Date** : 2026-05-19
+- **Decision** : Every skill whose scope touches JSON (mariadb-syntax-json, mariadb-impl-schema-design, mariadb-impl-migration-mysql-to-mariadb, mariadb-errors-encoding-and-collation) MUST repeat in its Quick Reference : "MariaDB JSON is a LONGTEXT alias, not native binary. Use CHECK (JSON_VALID(col)) for structure ; use functional indexes on virtual columns for index access."
+- **Rationale** : This is the single most consequential MySQL divergence (L-005) ; one-place documentation creates "I missed this" failures on read.
+- **Consequence** : Polish-pass agent in Phase 6.5 explicitly checks for the LONGTEXT-alias sentence in all four skills.

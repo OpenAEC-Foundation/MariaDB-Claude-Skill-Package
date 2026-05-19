@@ -5,14 +5,16 @@
 | Phase | Description | Status | Progress |
 |-------|------------|--------|----------|
 | Phase 1 | Raw Masterplan | DONE | 100% |
-| Phase 2 | Deep Research (Vooronderzoek) | IN PROGRESS | 0% |
-| Phase 3 | Masterplan Refinement | PENDING (user-checkpoint) | 0% |
-| Phase 4 | Topic-Specific Research | PENDING | 0% |
+| Phase 2 | Deep Research (Vooronderzoek) | DONE | 100% |
+| Phase 3 | Masterplan Refinement | AWAITING USER-CHECKPOINT | 95% |
+| Phase 4 | Topic-Specific Research | PENDING (post user-go) | 0% |
 | Phase 5 | Skill Creation | PENDING (tmux-orchestration) | 0% |
 | Phase 6 | Validation | PENDING (user-go) | 0% |
 | Phase 7 | Publication | PENDING (user-go) | 0% |
 
-**Overall Progress** : 15% (workspace bootstrap + raw masterplan complete, deep research starting)
+**Overall Progress** : 35% (Phases 1-3 complete pending user-checkpoint ; Phase 4+5+6+7 await go)
+
+Final skill count : 30 (was 28 raw ; +2 from Phase 2 findings : check-constraints, defaults-and-sql-modes ; +1 split = stored-routines into procedures-functions + triggers-events-views)
 
 ## Next Steps
 
@@ -25,12 +27,12 @@
 
 | Category | Estimated | Created | Validated |
 |----------|-----------|---------|-----------|
-| core/ | 5 | 0 | 0 |
-| syntax/ | 8 | 0 | 0 |
+| core/ | 6 | 0 | 0 |
+| syntax/ | 10 | 0 | 0 |
 | impl/ | 7 | 0 | 0 |
 | errors/ | 5 | 0 | 0 |
 | agents/ | 3 | 0 | 0 |
-| **Total** | **28** | **0** | **0** |
+| **Total** | **30** | **0** | **0** |
 
 Estimates from raw masterplan. Phase 3 refinement may merge / drop / split.
 
