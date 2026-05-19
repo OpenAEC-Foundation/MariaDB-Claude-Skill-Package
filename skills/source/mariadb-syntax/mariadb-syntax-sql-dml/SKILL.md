@@ -4,7 +4,7 @@ description: >
   Use when writing INSERT, UPDATE, DELETE, REPLACE, or upsert statements, debugging "why was this row not updated", or migrating MySQL DML patterns to MariaDB.
   Prevents the INSERT IGNORE silent-corruption trap, REPLACE INTO FK cascade, ON DUPLICATE KEY auto-increment burn, multi-table UPDATE/DELETE ordering pitfalls, and the "UPDATE RETURNING does not exist in LTS" gotcha.
   Covers INSERT single-row + multi-row + INSERT SET + INSERT ... SELECT, INSERT ... ON DUPLICATE KEY UPDATE, INSERT IGNORE pitfalls, REPLACE INTO, UPDATE ... ORDER BY ... LIMIT, multi-table UPDATE/DELETE with JOIN, INSERT/DELETE RETURNING, DELETE HISTORY for system-versioned tables.
-  Keywords: INSERT, UPDATE, DELETE, REPLACE, ON DUPLICATE KEY UPDATE, INSERT IGNORE, RETURNING, INSERT RETURNING, DELETE RETURNING, multi-table UPDATE, multi-table DELETE, upsert, why was my row not updated, my insert ignored the error, auto increment burn, FK cascade on REPLACE, mariadb upsert pattern, UPDATE RETURNING not supported, DELETE HISTORY, system-versioned table purge, LAST_INSERT_ID, ROW_COUNT
+  Keywords: INSERT, UPDATE, DELETE, REPLACE, ON DUPLICATE KEY UPDATE, INSERT IGNORE, RETURNING, INSERT RETURNING, DELETE RETURNING, multi-table UPDATE, multi-table DELETE, upsert, why was my row not updated, my insert ignored the error, auto increment burn, FK cascade on REPLACE, mariadb upsert pattern, UPDATE RETURNING not supported, DELETE HISTORY, system-versioned table purge, LAST_INSERT_ID, ROW_COUNT, how do I do an upsert, how do I update multiple tables, what is INSERT IGNORE, getting started with INSERT and UPDATE
 license: MIT
 compatibility: "Designed for Claude Code. Requires MariaDB 10.6-LTS, 10.11-LTS, 11.x, 12.x."
 metadata:

@@ -4,7 +4,7 @@ description: >
   Use when a user provides a slow query plus its EXPLAIN output and wants a concrete optimization, or asks "make this query faster", or wants an index recommendation validated against MariaDB optimizer behavior.
   Prevents the common mistake of suggesting an index without checking selectivity, proposing FORCE INDEX as a fix, copying MySQL 8 optimizer hints, or recommending an index that duplicates an existing one.
   Covers a deterministic query-optimization procedure : read EXPLAIN, identify the bottleneck (type=ALL, filesort, temporary), propose index or rewrite, validate against composite leftmost-prefix rule, check covering-index opportunity, verify with ANALYZE FORMAT=JSON, cross-references mariadb-impl-query-optimization, mariadb-syntax-indexing, mariadb-errors-slow-queries.
-  Keywords: optimize my query, make this query faster, query optimization, EXPLAIN analysis, index recommendation, why is this slow, slow query fix, covering index, index suggestion, query rewrite, optimize SQL, performance fix
+  Keywords: optimize my query, make this query faster, query optimization, EXPLAIN analysis, index recommendation, why is this slow, slow query fix, covering index, index suggestion, query rewrite, optimize SQL, performance fix, EXPLAIN, ANALYZE FORMAT=JSON, type=ALL, Using filesort, Using temporary, FORCE INDEX, leftmost-prefix, optimizer_switch, index selectivity
 license: MIT
 compatibility: "Designed for Claude Code. Requires MariaDB 10.6-LTS, 10.11-LTS, 11.x, 12.x."
 metadata:

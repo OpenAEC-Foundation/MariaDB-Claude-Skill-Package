@@ -2,6 +2,8 @@
 # https://platform.openai.com/docs/codex/skills
 name: mariadb-claude-skill-package
 description: >
-  0 deterministic Claude AI skills for MariaDB 10.6-LTS,10.11-LTS,11.x,12.x.
-  Deterministic Claude skills for MariaDB : schema design, indexing, query optimization, replication, JSON, Galera, partitioning. Companion to Frappe/ERPNext
+  31 deterministic Claude AI skills for MariaDB 10.6 LTS, 10.11 LTS, 11.x, 12.x.
+  Covers storage engines, schema design, indexing, query optimization, replication,
+  Galera clustering, JSON, backup and restore, security, and MySQL to MariaDB migration.
+  Companion to the Frappe / ERPNext skill package.
 skills_directory: ./skills/source

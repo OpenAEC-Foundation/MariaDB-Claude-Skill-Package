@@ -4,7 +4,7 @@ description: >
   Use when reviewing a proposed MariaDB schema before it ships, auditing an existing schema for engine / indexing / naming / normalization problems, or validating a migration DDL.
   Prevents the common mistake of shipping a schema with MyISAM tables, UUID-text PKs, missing tenant indexes, utf8 charset, or composite indexes in the wrong column order.
   Covers a deterministic schema-review checklist : storage-engine choice, primary-key type, indexing strategy and column-order, charset / collation, normalization fitness, multi-tenant pattern detection, naming-convention adherence, with severity grading and cross-references to mariadb-core-storage-engines, mariadb-syntax-indexing, mariadb-impl-schema-design.
-  Keywords: schema review, schema audit, review my schema, is this schema correct, schema checklist, design review, storage engine audit, index audit, primary key audit, normalization check, multi-tenant check, naming convention, DDL review, before I ship this schema
+  Keywords: schema review, schema audit, review my schema, is this schema correct, schema checklist, design review, storage engine audit, index audit, primary key audit, normalization check, multi-tenant check, naming convention, DDL review, before I ship this schema, ENGINE=InnoDB, MyISAM, BIGINT AUTO_INCREMENT, UUID primary key, utf8mb4, ROW_FORMAT=DYNAMIC, composite index column order, leftmost-prefix, how do I review a schema, what is wrong with my schema, is my table design good, getting started with schema review
 license: MIT
 compatibility: "Designed for Claude Code. Requires MariaDB 10.6-LTS, 10.11-LTS, 11.x, 12.x."
 metadata:

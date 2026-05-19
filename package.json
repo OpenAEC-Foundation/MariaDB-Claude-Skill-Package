@@ -1,7 +1,7 @@
 {
   "name": "@openaec/mariadb-claude-skill-package",
   "version": "1.0.0",
-  "description": "0 deterministic Claude AI skills for MariaDB 10.6-LTS,10.11-LTS,11.x,12.x",
+  "description": "31 deterministic Claude AI skills for MariaDB 10.6 LTS, 10.11 LTS, 11.x, 12.x : storage engines, schema design, indexing, query optimization, replication, Galera, JSON, backup, security, MySQL migration",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -14,10 +14,137 @@
     "claude-skills",
     "claude-code",
     "mariadb",
-    "sql","python","bash",
+    "sql",
+    "python",
+    "bash",
     "openaec"
   ],
   "agents": {
-    "skills": []
+    "skills": [
+      {
+        "name": "mariadb-agents-migration-validator",
+        "path": "./skills/source/mariadb-agents/mariadb-agents-migration-validator"
+      },
+      {
+        "name": "mariadb-agents-query-optimizer",
+        "path": "./skills/source/mariadb-agents/mariadb-agents-query-optimizer"
+      },
+      {
+        "name": "mariadb-agents-schema-reviewer",
+        "path": "./skills/source/mariadb-agents/mariadb-agents-schema-reviewer"
+      },
+      {
+        "name": "mariadb-core-architecture",
+        "path": "./skills/source/mariadb-core/mariadb-core-architecture"
+      },
+      {
+        "name": "mariadb-core-defaults-and-sql-modes",
+        "path": "./skills/source/mariadb-core/mariadb-core-defaults-and-sql-modes"
+      },
+      {
+        "name": "mariadb-core-replication-model",
+        "path": "./skills/source/mariadb-core/mariadb-core-replication-model"
+      },
+      {
+        "name": "mariadb-core-security-model",
+        "path": "./skills/source/mariadb-core/mariadb-core-security-model"
+      },
+      {
+        "name": "mariadb-core-storage-engines",
+        "path": "./skills/source/mariadb-core/mariadb-core-storage-engines"
+      },
+      {
+        "name": "mariadb-core-version-matrix",
+        "path": "./skills/source/mariadb-core/mariadb-core-version-matrix"
+      },
+      {
+        "name": "mariadb-errors-deadlocks",
+        "path": "./skills/source/mariadb-errors/mariadb-errors-deadlocks"
+      },
+      {
+        "name": "mariadb-errors-encoding-and-collation",
+        "path": "./skills/source/mariadb-errors/mariadb-errors-encoding-and-collation"
+      },
+      {
+        "name": "mariadb-errors-galera-conflicts",
+        "path": "./skills/source/mariadb-errors/mariadb-errors-galera-conflicts"
+      },
+      {
+        "name": "mariadb-errors-replication-lag",
+        "path": "./skills/source/mariadb-errors/mariadb-errors-replication-lag"
+      },
+      {
+        "name": "mariadb-errors-slow-queries",
+        "path": "./skills/source/mariadb-errors/mariadb-errors-slow-queries"
+      },
+      {
+        "name": "mariadb-impl-backup-restore",
+        "path": "./skills/source/mariadb-impl/mariadb-impl-backup-restore"
+      },
+      {
+        "name": "mariadb-impl-galera-cluster",
+        "path": "./skills/source/mariadb-impl/mariadb-impl-galera-cluster"
+      },
+      {
+        "name": "mariadb-impl-migration-mysql-to-mariadb",
+        "path": "./skills/source/mariadb-impl/mariadb-impl-migration-mysql-to-mariadb"
+      },
+      {
+        "name": "mariadb-impl-performance-tuning",
+        "path": "./skills/source/mariadb-impl/mariadb-impl-performance-tuning"
+      },
+      {
+        "name": "mariadb-impl-query-optimization",
+        "path": "./skills/source/mariadb-impl/mariadb-impl-query-optimization"
+      },
+      {
+        "name": "mariadb-impl-replication-setup",
+        "path": "./skills/source/mariadb-impl/mariadb-impl-replication-setup"
+      },
+      {
+        "name": "mariadb-impl-schema-design",
+        "path": "./skills/source/mariadb-impl/mariadb-impl-schema-design"
+      },
+      {
+        "name": "mariadb-syntax-check-constraints",
+        "path": "./skills/source/mariadb-syntax/mariadb-syntax-check-constraints"
+      },
+      {
+        "name": "mariadb-syntax-dynamic-columns",
+        "path": "./skills/source/mariadb-syntax/mariadb-syntax-dynamic-columns"
+      },
+      {
+        "name": "mariadb-syntax-indexing",
+        "path": "./skills/source/mariadb-syntax/mariadb-syntax-indexing"
+      },
+      {
+        "name": "mariadb-syntax-json",
+        "path": "./skills/source/mariadb-syntax/mariadb-syntax-json"
+      },
+      {
+        "name": "mariadb-syntax-procedures-functions",
+        "path": "./skills/source/mariadb-syntax/mariadb-syntax-procedures-functions"
+      },
+      {
+        "name": "mariadb-syntax-sql-ddl",
+        "path": "./skills/source/mariadb-syntax/mariadb-syntax-sql-ddl"
+      },
+      {
+        "name": "mariadb-syntax-sql-dml",
+        "path": "./skills/source/mariadb-syntax/mariadb-syntax-sql-dml"
+      },
+      {
+        "name": "mariadb-syntax-system-versioned-tables",
+        "path": "./skills/source/mariadb-syntax/mariadb-syntax-system-versioned-tables"
+      },
+      {
+        "name": "mariadb-syntax-triggers-events-views",
+        "path": "./skills/source/mariadb-syntax/mariadb-syntax-triggers-events-views"
+      },
+      {
+        "name": "mariadb-syntax-window-and-cte",
+        "path": "./skills/source/mariadb-syntax/mariadb-syntax-window-and-cte"
+      }
+    ]
   }
 }
