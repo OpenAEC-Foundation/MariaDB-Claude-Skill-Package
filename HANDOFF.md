@@ -1,63 +1,56 @@
 # Handoff : MariaDB-Claude-Skill-Package
 
-> Last updated : 2026-05-19
+> Last updated : 2026-05-20
 > Generated from Skill-Package-Workflow-Template BOOTSTRAP-RUNBOOK
 
 ## Status
 
-- **Phase** : Phase 1 (Raw Masterplan) (e.g. Phase 1 raw masterplan / Phase 5 batch N/M / v1.0.0 PUBLISHED)
-- **Skills** : 0 / 22-28
-- **GitHub remote** : https://github.com/OpenAEC-Foundation/MariaDB-Claude-Skill-Package
-- **Last commit** : 1b2adcd feat: bootstrap MariaDB skill package workspace
-- **Compliance score** : n.v.t. (pre-phase-6)%
+- **Phase** : Phase 5 (Skill Creation) DONE. Phase 6 + 7 await user-go.
+- **Skills** : 31 / 31 built, all 5 structural validators green
+- **GitHub remote** : NOT created yet (deferred to Phase 7 per user instruction "geen push")
+- **Last commit** : see git log (batch B-11 commit pending after this HANDOFF update)
+- **Compliance score** : not yet measured (Phase 6 audit pending)
 
 ## What is done
 
-- Workspace bootstrap (CLAUDE.md, ROADMAP, REQUIREMENTS, DECISIONS, SOURCES, WAY_OF_WORK, LESSONS, CHANGELOG, README, INDEX, HANDOFF, package.json, agents/openai.yaml, .github/workflows)
-- Placeholder-replace : all template-variables filled with MariaDB-specific values
-- Raw masterplan skeleton at `docs/masterplan/mariadb-masterplan.md`
-- Vooronderzoek stub at `docs/research/vooronderzoek-mariadb.md`
+- Phase 1 : workspace bootstrap, placeholder-replace, raw masterplan
+- Phase 2 : 8669-word vooronderzoek (3 parallel research-agents, ~82 KB citations)
+- Phase 3 : refined masterplan, 10 refinement decisions, 11-batch plan, user-checkpoint approved
+- Phase 4+5 : 31 skills built across 11 batches via in-process opus Agent dispatch (D-011 deviation from tmux-orchestration for single-session efficiency)
+- All 31 skills : SKILL.md (<500 lines) + 3 reference files, WebFetch-verified
+- 10 lessons logged (L-001 to L-010)
 
 ## What is open
 
-- Phase 1 finalization : raw masterplan content per category (TBD this session)
-- Phase 2 : dispatch deep-research agents against mariadb.com/kb
-- Phase 3 : refine masterplan + user-checkpoint
-- Phase 4+5 : tmux-orchestration with 3 skill-builder workers
-- GitHub remote creation : deferred until Phase 7 (no push pre-checkpoint)
+- **Phase 6 : Validation** (awaiting user-go) : compliance audit P-010, functional sample-test per category, reconcile L-010 (utf8mb4_uca1400 11.5 vs 11.6 discrepancy between defaults-and-sql-modes and encoding-and-collation skills)
+- **Phase 6.5 : Discovery manifests** : package.json agents.skills[], agents/openai.yaml, INDEX.md regenerate, Keywords polish, em-dash sweep
+- **Phase 7 : Publication** (awaiting user-go) : README finalize, social preview banner render, CHANGELOG 1.0.0, GitHub repo create under OpenAEC-Foundation, push, v1.0.0 release, topics
+- **Masterplan arithmetic** : masterplan header says "30 skills" but inventory totals 31 (6+10+7+5+3). Correct to 31 in Phase 6.
 
 ## Next-session entry point
 
-Open this workspace in VS Code and run :
-
 ```
-Lees START-PROMPT.md en hervat vanaf Phase 1 (Raw Masterplan).
+Lees ROADMAP.md en HANDOFF.md. Phase 5 is af (31 skills). Voer Phase 6 (validation + audit) uit, daarna Phase 6.5 (manifests) en Phase 7 (publication). Wacht op user-go waar BOOTSTRAP-RUNBOOK dat voorschrijft.
 ```
 
-Of expliciet :
+## Active batch (Phase 5 complete)
 
-```
-Lees BOOTSTRAP-RUNBOOK.md van Skill-Package-Workflow-Template en hervat phase 2.
-```
+All 11 batches done. No active workers.
 
-## Active batch (if in Phase 5)
-
-_No active batch yet : Phase 5 not started._
-
-| Worker | Skill | Status | tmo task ID |
-|--------|-------|--------|-------------|
-| worker-1 | : | : | : |
-| worker-2 | : | : | : |
-| worker-3 | : | : | : |
+| Batch | Skills | Status |
+|-------|--------|--------|
+| B-01 to B-11 | 31 skills total | all committed, all validators green |
 
 ## Decisions blocking next step
 
-- None pre-Phase-3. After Phase 3 (masterplan refinement) user-checkpoint required before Phase 4+5.
+- None. Phase 6 can start on user-go. Phase 7 (GitHub push) requires explicit user-go per original prompt.
 
 ## Special notes
 
-- MariaDB is the default DB for Frappe/ERPNext : companion-skill section required in INDEX + README
-- MySQL to MariaDB migration is in-scope as a dedicated skill (not just a footnote)
+- MariaDB is the default DB for Frappe/ERPNext : companion-skill section present in INDEX + README
+- MySQL to MariaDB migration is a dedicated skill (mariadb-impl-migration-mysql-to-mariadb) + a validator agent skill (mariadb-agents-migration-validator)
+- D-011 : Phase 4+5 ran via in-process Agent dispatch, not tmux-orchestration workers (single-session efficiency). tmux-orchestration state-files (state/) written for record only.
+- 10 lessons capture KB-divergence findings : no GROUPS frame, GTID incompatible, JSON-LONGTEXT, IGNORED-vs-INVISIBLE, UPDATE-RETURNING 13.0+, query-cache not removed, slow-log rename, uca1400 11.5
 
 ---
 
