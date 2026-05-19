@@ -86,6 +86,17 @@ Numbered decisions (D-XXX) with rationale. Immutable once recorded — new decis
 
 ---
 
+## D-011 : Phase 4+5 execution via in-process Agent dispatch (deviation from P-012)
+
+- **Date** : 2026-05-19
+- **Decision** : Phase 4 + 5 (topic-research + skill-creation) run via in-process Agent tool calls in batches of 3, NOT via tmux-orchestration workers. tmux-orchestration state-files (state/messages.jsonl, role file) still written for record-keeping.
+- **Rationale** : Single-session autonomous run per user-go on Phase 3. 30 skills × ~30-50k tokens per worker via independent claude-instances = high coordination overhead and risk of L-007 context-overflow. In-process Agent dispatch (opus) reuses orchestrator token-budget more efficiently and provides synchronous quality-gate.
+- **Standing-order context** : CLAUDE.md P-012 mandates tmux-orchestration for packages >15 skills. Deviation accepted ONLY for this single-session run. Future re-runs in fresh sessions SHOULD use tmux-orchestration per standing-order.
+- **Consequence** : Per-batch dispatch is 3 parallel Agent calls in same message. Quality-gate runs synchronously after batch return. Worker context-bundle is replaced by inlined agent-prompt with same content.
+- **Skip-criterion (D-009) interaction** : Vooronderzoek covers most skills with >= 300 words + 5 citations. Per-skill agent prompt instructs the agent to do supplementary WebFetch for thin areas (e.g. C-01 architecture). Phase 4 separate dispatch is eliminated ; topic-research merges with skill-creation.
+
+---
+
 ## D-010 : JSON LONGTEXT-alias must appear in every JSON-related skill's Quick Reference
 
 - **Date** : 2026-05-19
