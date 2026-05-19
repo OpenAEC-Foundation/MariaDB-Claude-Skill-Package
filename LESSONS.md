@@ -41,6 +41,24 @@ Observations and findings captured during MariaDB skill package development.
 
 ---
 
+## L-006 : MariaDB uses `IGNORED INDEX`, not MySQL 8 `INVISIBLE INDEX` (2026-05-19)
+
+- **Context** : Batch B-03 S-03 indexing skill, WebFetch against mariadb.com/kb/en/ignored-indexes/.
+- **Observation** : Vooronderzoek + raw masterplan + agent-prompt said "invisible indexes (10.6+)". Actual MariaDB keyword is `IGNORED` (`ALTER TABLE t ALTER INDEX idx IGNORED`). MySQL 8 uses `INVISIBLE` for the same feature.
+- **Impact** : Users migrating from MySQL 8 typing `INVISIBLE` get a syntax error. Skill explicitly translates the keyword and includes anti-pattern.
+- **Rule** : When a feature exists "in both MariaDB and MySQL" always WebFetch-verify the keyword name. Multiple identical-concept features have different keyword spellings.
+
+---
+
+## L-007 : `UPDATE RETURNING` is 13.0+, NOT 10.5+ (2026-05-19)
+
+- **Context** : Batch B-03 S-01 DML skill, WebFetch against mariadb.com/kb/en/update/.
+- **Observation** : RETURNING-clause introduction is per-statement : DELETE RETURNING in 10.0+, INSERT RETURNING in 10.5+, UPDATE RETURNING only in 13.0+. Masterplan + prompt assumed all three landed in 10.5+.
+- **Impact** : Including UPDATE RETURNING examples for 10.6 / 10.11 / 11.x / 12.x is wrong : users will get syntax error. Skill scopes UPDATE RETURNING to 13.0+ with a callout that current LTS does not support it.
+- **Rule** : NEVER assume a clause's introduction-version is uniform across statement types. Verify per-statement KB page.
+
+---
+
 ## L-005 : MariaDB JSON is LONGTEXT, not binary (2026-05-19)
 
 - **Context** : Phase 2 Cluster-1 research.
