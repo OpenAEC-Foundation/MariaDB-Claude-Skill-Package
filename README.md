@@ -1,16 +1,16 @@
 # MariaDB : Claude Skill Package
 
 <p align="center">
-  <img src="docs/social-preview.png" alt="0 Deterministic Skills for MariaDB" width="100%">
+  <img src="docs/social-preview.png" alt="31 Deterministic Claude Skills for MariaDB" width="100%">
 </p>
 
 ![Claude Code Ready](https://img.shields.io/badge/Claude_Code-Ready-blue?style=flat-square)
-![MariaDB](https://img.shields.io/badge/MariaDB-10.6-LTS,10.11-LTS,11.x,12.x-0A66C2?style=flat-square)
-![Skills](https://img.shields.io/badge/Skills-0-green?style=flat-square)
+![MariaDB](https://img.shields.io/badge/MariaDB-10.6%20%7C%2010.11%20%7C%2011.x%20%7C%2012.x-0A66C2?style=flat-square)
+![Skills](https://img.shields.io/badge/Skills-31-green?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)
 ![Agent Skills](https://img.shields.io/badge/agent--skills-compatible-purple?style=flat-square)
 
-**0 deterministic Claude AI skills for MariaDB. Deterministic Claude skills for MariaDB : schema design, indexing, query optimization, replication, JSON, Galera, partitioning. Companion to Frappe/ERPNext**
+**31 deterministic Claude AI skills for MariaDB : storage engines, schema design, indexing, query optimization, replication, Galera clustering, JSON, backup and restore, security, and MySQL to MariaDB migration. Companion to the Frappe / ERPNext skill package.**
 
 Built on the [Agent Skills](https://agentskills.org) open standard. Discoverable via npm-agentskills manifest and OpenAI Codex skill discovery.
 
@@ -43,14 +43,14 @@ ALTER TABLE products
 
 | Category | Count | Purpose |
 |----------|:-----:|---------|
-| **core/** | 0 | Architecture, cross-cutting concerns |
-| **syntax/** | 0 | API syntax, code patterns, signatures |
-| **impl/** | 0 | Step-by-step development workflows |
-| **errors/** | 0 | Error handling, debugging, anti-patterns |
-| **agents/** | 0 | Validation, code generation, orchestration |
-| **Total** | **0** | |
+| **core/** | 6 | Architecture, storage engines, replication model, security, versions, defaults |
+| **syntax/** | 10 | SQL DML / DDL, indexing, JSON, dynamic columns, window functions, temporal tables, routines |
+| **impl/** | 7 | Schema design, query optimization, replication, Galera, backup, tuning, migration |
+| **errors/** | 5 | Deadlocks, replication lag, Galera conflicts, slow queries, encoding |
+| **agents/** | 3 | Schema review, query optimization, migration validation |
+| **Total** | **31** | |
 
-See [INDEX.md](INDEX.md) for the complete skill catalog with descriptions and dependency graph.
+See [INDEX.md](INDEX.md) for the complete skill catalog with descriptions and the dependency graph.
 
 ## Installation
 
@@ -103,7 +103,9 @@ YAML frontmatter uses folded scalar `>`, "Use when..." opener, and a `Keywords:`
 
 ## Companion Skills : Cross-Technology Integration
 
-For projects combining MariaDB with other AEC technologies, see [Cross-Tech-AEC-Claude-Skill-Package](https://github.com/OpenAEC-Foundation/Cross-Tech-AEC-Claude-Skill-Package).
+MariaDB is the default database for Frappe / ERPNext, runs in Docker containers, and backs Nextcloud. The `mariadb-impl-schema-design` skill includes a dedicated Frappe / ERPNext table-naming companion section.
+
+For projects combining MariaDB with other AEC technologies, see [Cross-Tech-AEC-Claude-Skill-Package](https://github.com/OpenAEC-Foundation/Cross-Tech-AEC-Claude-Skill-Package) and the [Frappe Claude Skill Package](https://github.com/OpenAEC-Foundation/Frappe_Claude_Skill_Package).
 
 ## Related Skill Packages (OpenAEC Foundation)
 

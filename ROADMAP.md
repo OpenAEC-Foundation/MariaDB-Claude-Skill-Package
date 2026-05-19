@@ -9,10 +9,10 @@
 | Phase 3 | Masterplan Refinement | DONE | 100% |
 | Phase 4 | Topic-Specific Research | DONE (merged into Phase 5 per D-011) | 100% |
 | Phase 5 | Skill Creation | DONE | 100% |
-| Phase 6 | Validation | AWAITING USER-GO | 0% |
-| Phase 7 | Publication | AWAITING USER-GO | 0% |
+| Phase 6 | Validation | DONE | 100% |
+| Phase 7 | Publication | IN PROGRESS | 90% |
 
-**Overall Progress** : 75% (Phases 1-5 complete ; Phase 6 validation + Phase 7 publication await user-go)
+**Overall Progress** : 98% (Phases 1-6 complete, compliance audit 100% ; Phase 7 publication : README + banner + manifests done, GitHub repo create + push + release pending)
 
 Final skill count : 31 (core 6, syntax 10, impl 7, errors 5, agents 3). All 5 structural validators green across all skills.
 
