@@ -50,6 +50,15 @@ Observations and findings captured during MariaDB skill package development.
 
 ---
 
+## L-010 : utf8mb4_uca1400_ai_ci is default since 11.5, not 11.6 (2026-05-20)
+
+- **Context** : Batch B-10 E-05 encoding-and-collation skill, WebFetch against mariadb.com/kb supported-character-sets-and-collations.
+- **Observation** : Default utf8mb4 collation is `utf8mb4_general_ci` through 11.4, switches to `utf8mb4_uca1400_ai_ci` from 11.5+. The 184 UCA-14.0.0 collations were added in 10.10. Earlier batches (B-02 C-06 defaults-and-sql-modes) cited "11.6" for this shift.
+- **Impact** : Minor version-precision inconsistency between mariadb-core-defaults-and-sql-modes (says 11.6) and mariadb-errors-encoding-and-collation (says 11.5). Phase 6 polish-pass must reconcile to 11.5 (the WebFetch-verified value).
+- **Rule** : When two skills cite different introduction-versions for the same fact, the WebFetch-verified one wins ; flag for Phase-6 cross-skill consistency reconciliation.
+
+---
+
 ## L-009 : Slow-query-log variables renamed in 10.11+ (2026-05-20)
 
 - **Context** : Batch B-09 E-04 slow-queries skill, WebFetch against mariadb.com/kb/en/slow-query-log/.
