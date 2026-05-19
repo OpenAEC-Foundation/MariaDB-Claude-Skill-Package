@@ -10,9 +10,14 @@
 | Phase 4 | Topic-Specific Research | DONE (merged into Phase 5 per D-011) | 100% |
 | Phase 5 | Skill Creation | DONE | 100% |
 | Phase 6 | Validation | DONE | 100% |
-| Phase 7 | Publication | IN PROGRESS | 90% |
+| Phase 7 | Publication | DONE | 100% |
 
-**Overall Progress** : 98% (Phases 1-6 complete, compliance audit 100% ; Phase 7 publication : README + banner + manifests done, GitHub repo create + push + release pending)
+**Overall Progress** : 100% : COMPLETE, v1.0.0 published
+
+Published : https://github.com/OpenAEC-Foundation/MariaDB-Claude-Skill-Package
+Release : https://github.com/OpenAEC-Foundation/MariaDB-Claude-Skill-Package/releases/tag/v1.0.0
+
+Remaining manual step : upload docs/social-preview.png via GitHub repo Settings to Social preview (no API available for this).
 
 Final skill count : 31 (core 6, syntax 10, impl 7, errors 5, agents 3). All 5 structural validators green across all skills.
 

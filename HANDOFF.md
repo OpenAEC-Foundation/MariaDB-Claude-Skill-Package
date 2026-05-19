@@ -5,11 +5,12 @@
 
 ## Status
 
-- **Phase** : Phase 5 (Skill Creation) DONE. Phase 6 + 7 await user-go.
+- **Phase** : ALL 7 PHASES COMPLETE. v1.0.0 published 2026-05-20.
 - **Skills** : 31 / 31 built, all 5 structural validators green
-- **GitHub remote** : NOT created yet (deferred to Phase 7 per user instruction "geen push")
-- **Last commit** : see git log (batch B-11 commit pending after this HANDOFF update)
-- **Compliance score** : not yet measured (Phase 6 audit pending)
+- **GitHub remote** : https://github.com/OpenAEC-Foundation/MariaDB-Claude-Skill-Package (public)
+- **Release** : v1.0.0 live
+- **Compliance score** : 100% (4/4 checks) ; functional sample-test 5/5 PASS
+- **Open manual step** : upload docs/social-preview.png via repo Settings to Social preview (no API)
 
 ## What is done
 
