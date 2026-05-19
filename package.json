@@ -1,0 +1,23 @@
+{
+  "name": "@openaec/mariadb-claude-skill-package",
+  "version": "1.0.0",
+  "description": "0 deterministic Claude AI skills for MariaDB 10.6-LTS,10.11-LTS,11.x,12.x",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OpenAEC-Foundation/MariaDB-Claude-Skill-Package"
+  },
+  "homepage": "https://github.com/OpenAEC-Foundation/MariaDB-Claude-Skill-Package#readme",
+  "keywords": [
+    "agent-skills",
+    "agentskills",
+    "claude-skills",
+    "claude-code",
+    "mariadb",
+    "sql","python","bash",
+    "openaec"
+  ],
+  "agents": {
+    "skills": []
+  }
+}
