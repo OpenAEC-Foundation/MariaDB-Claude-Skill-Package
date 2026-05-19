@@ -50,6 +50,16 @@ Observations and findings captured during MariaDB skill package development.
 
 ---
 
+## L-008 : Query cache is NOT removed in 11.0+, still present default-OFF (2026-05-19)
+
+- **Context** : Batch B-08 I-06 performance-tuning skill, WebFetch against mariadb.com/docs/server/server-management/variables-and-modes/server-system-variables.
+- **Observation** : Multiple sources (including initial vooronderzoek) claimed query cache "removed completely in 11.0+". WebFetch verification shows query_cache_type and query_cache_size remain in 11.x. Status : deprecated default-OFF since 10.1.7+, but NOT removed.
+- **Impact** : Earlier agent prompts and the masterplan claimed "removed completely". Correction propagated to I-06 performance-tuning skill (default OFF, still present).
+- **Related** : innodb_buffer_pool_instances IS REMOVED in 10.6.0+ (not just deprecated). Tuning skills must reflect both nuances.
+- **Rule** : "Removed" vs "deprecated default-off" require WebFetch verification per version ; KB phrasing varies. Always check the per-variable KB page rather than rely on summary tables.
+
+---
+
 ## L-007 : `UPDATE RETURNING` is 13.0+, NOT 10.5+ (2026-05-19)
 
 - **Context** : Batch B-03 S-01 DML skill, WebFetch against mariadb.com/kb/en/update/.
