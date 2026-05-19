@@ -25,7 +25,7 @@ Define what the skill package must achieve and establish quality criteria for al
 - Anti-patterns documented with "WHY this fails" explanations
 
 ### Quality Guarantees
-- Every code example compiles/runs against MariaDB {{TECH_VERSIONS}}
+- Every code example compiles/runs against MariaDB 10.6-LTS, 10.11-LTS, 11.x, 12.x
 - All API references verified against official docs (SOURCES.md)
 - Decision trees for common architectural choices
 - Cross-references between related skills

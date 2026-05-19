@@ -14,7 +14,7 @@ Skill packages contain code-generation guidance, not executable code. The primar
 ### How to report
 
 - **For skill-content issues** (e.g. anti-pattern that allows SQL injection in generated code) : open a GitHub issue with `security` label
-- **For sensitive issues** : email {{SECURITY_EMAIL}} with subject "SECURITY : MariaDB-Claude-Skill-Package"
+- **For sensitive issues** : email freek@3bm.co.nl with subject "SECURITY : MariaDB-Claude-Skill-Package"
 - **For supply-chain issues** (compromised dependencies in `package.json`) : open a GitHub Security Advisory via the repo's Security tab
 
 ### Response time

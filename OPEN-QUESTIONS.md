@@ -4,33 +4,13 @@
 
 ## Active Questions
 
-### Q-001 : {{QUESTION_SUBJECT}}
-
-- **Status** : OPEN
-- **Question** : {{QUESTION_BODY}}
-- **Impact** : {{IMPACT_DESCRIPTION}}
-- **Blocks** : {{WHICH_PHASE_OR_SKILL}}
-- **Requested at** : 2026-05-19
-
-### Q-002 : {{QUESTION_SUBJECT}}
-
-- **Status** : OPEN
-- **Question** : {{QUESTION_BODY}}
-- **Impact** : {{IMPACT_DESCRIPTION}}
-- **Blocks** : {{WHICH_PHASE_OR_SKILL}}
-- **Requested at** : 2026-05-19
+_No active questions. Phase-3 user-checkpoint will likely surface scope-refinement questions (merge / drop / split skills based on Phase-2 research)._
 
 ---
 
 ## Answered Questions
 
-### Q-XXX : {{QUESTION_SUBJECT}}
-
-- **Status** : RESOLVED (2026-05-19)
-- **Question** : {{QUESTION_BODY}}
-- **Answer** : {{USER_ANSWER}}
-- **Action taken** : {{WHAT_WAS_DONE}}
-- **Recorded in** : DECISIONS.md D-XXX
+_None yet._
 
 ---
 

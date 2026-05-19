@@ -15,35 +15,37 @@
 | **agents** | 0 | Validation, code generation, orchestration |
 | **Total** | **0** | |
 
-## Core Skills (0)
+> Skill rows are auto-populated by `generate-index.js` after Phase 5. Pre-Phase-5 the catalog shows the planned per-category structure only.
+
+## Core Skills (0 / planned post-research)
 
 | Skill | Description | Dependencies |
 |-------|-------------|--------------|
-| `mariadb-core-{topic}` | {{DESCRIPTION_FROM_FRONTMATTER}} | None |
+| _TBD : populated from frontmatter after Phase 5_ | _generated_ | None |
 
-## Syntax Skills (0)
-
-| Skill | Description | Dependencies |
-|-------|-------------|--------------|
-| `mariadb-syntax-{topic}` | {{DESCRIPTION_FROM_FRONTMATTER}} | core-{topic} |
-
-## Implementation Skills (0)
+## Syntax Skills (0 / planned post-research)
 
 | Skill | Description | Dependencies |
 |-------|-------------|--------------|
-| `mariadb-impl-{topic}` | {{DESCRIPTION_FROM_FRONTMATTER}} | syntax-{topic} |
+| _TBD_ | _generated_ | core-* |
 
-## Error Skills (0)
-
-| Skill | Description | Dependencies |
-|-------|-------------|--------------|
-| `mariadb-errors-{topic}` | {{DESCRIPTION_FROM_FRONTMATTER}} | impl-{topic} |
-
-## Agent Skills (0)
+## Implementation Skills (0 / planned post-research)
 
 | Skill | Description | Dependencies |
 |-------|-------------|--------------|
-| `mariadb-agents-{topic}` | {{DESCRIPTION_FROM_FRONTMATTER}} | ALL |
+| _TBD_ | _generated_ | syntax-* |
+
+## Error Skills (0 / planned post-research)
+
+| Skill | Description | Dependencies |
+|-------|-------------|--------------|
+| _TBD_ | _generated_ | impl-* |
+
+## Agent Skills (0 / planned post-research)
+
+| Skill | Description | Dependencies |
+|-------|-------------|--------------|
+| _TBD_ | _generated_ | ALL |
 
 ## Dependency Graph
 

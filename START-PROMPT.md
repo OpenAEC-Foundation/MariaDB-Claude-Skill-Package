@@ -13,7 +13,7 @@ Inputs:
 - versions: 10.6-LTS,10.11-LTS,11.x,12.x
 - languages: SQL,Python,Bash
 - license: MIT
-- estimated skills: {{ESTIMATED_SKILLS}}
+- estimated skills: 22-28
 
 Ga door alle phases tot v1.0.0 published. Gebruik tmux-orchestration voor Phase 5. Bypass permissions ON. Geen stilvallen.
 ```
@@ -27,7 +27,7 @@ Lees HANDOFF.md en hervat vanaf de daar genoemde phase. Gebruik BOOTSTRAP-RUNBOO
 ## Alleen specifieke fase
 
 ```
-Lees BOOTSTRAP-RUNBOOK.md sectie {{SECTION_NUM}} (Phase {{PHASE_NUM}}) en voer alleen die fase uit. Werk op huidige staat van repo. Verify-conditie eind fase moet groen.
+Lees BOOTSTRAP-RUNBOOK.md sectie 4 (Phase 1) en voer alleen die fase uit. Werk op huidige staat van repo. Verify-conditie eind fase moet groen.
 ```
 
 ## Audit-only

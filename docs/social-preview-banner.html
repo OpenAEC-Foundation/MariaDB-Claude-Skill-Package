@@ -10,7 +10,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background: {{BG_COLOR}};
+    background: #1A1A2E;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,7 +20,7 @@
   .banner {
     width: 1280px;
     height: 640px;
-    background: {{BG_COLOR}};
+    background: #1A1A2E;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -33,7 +33,7 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, {{BRAND_PRIMARY}} 0%, {{BRAND_SECONDARY}} 50%, {{BRAND_ACCENT}} 100%);
+    background: linear-gradient(90deg, #1F8E9B 0%, #C74634 50%, #FFC107 100%);
   }
 
   /* Subtle blueprint grid */
@@ -73,7 +73,7 @@
     font-family: 'Space Grotesk', system-ui, sans-serif;
     font-size: 26px;
     font-weight: 700;
-    color: {{BRAND_PRIMARY}};
+    color: #1F8E9B;
     letter-spacing: 4px;
     text-transform: uppercase;
     margin-bottom: 22px;
@@ -106,9 +106,9 @@
     border: 2px solid;
   }
 
-  .badge-1 { border-color: {{BRAND_PRIMARY}};   color: {{BRAND_PRIMARY}}; }
-  .badge-2 { border-color: {{BRAND_SECONDARY}}; color: {{BRAND_SECONDARY}}; }
-  .badge-3 { border-color: {{BRAND_ACCENT}};    color: {{BRAND_ACCENT}}; }
+  .badge-1 { border-color: #1F8E9B;   color: #1F8E9B; }
+  .badge-2 { border-color: #C74634; color: #C74634; }
+  .badge-3 { border-color: #FFC107;    color: #FFC107; }
 
   .versions {
     font-family: 'JetBrains Mono', monospace;
@@ -181,16 +181,16 @@
   }
 
   .comment  { color: #A1A1AA; }
-  .keyword  { color: {{BRAND_PRIMARY}}; }
-  .function { color: {{BRAND_SECONDARY}}; }
+  .keyword  { color: #1F8E9B; }
+  .function { color: #C74634; }
   .string   { color: #34D399; }
-  .operator { color: {{BRAND_ACCENT}}; }
+  .operator { color: #FFC107; }
   .type     { color: #3178C6; }
   .cursor {
     display: inline-block;
     width: 8px;
     height: 17px;
-    background: {{BRAND_PRIMARY}};
+    background: #1F8E9B;
     vertical-align: text-bottom;
   }
 
@@ -211,7 +211,7 @@
   }
 
   .foundation-name .open { color: #FAFAF9; }
-  .foundation-name .aec  { color: {{BRAND_PRIMARY}}; }
+  .foundation-name .aec  { color: #1F8E9B; }
 
   .foundation-sub {
     font-family: 'Inter', system-ui, sans-serif;
@@ -230,16 +230,16 @@
     <div class="left">
       <div class="number">0</div>
       <div class="title">Deterministic Skills</div>
-      <div class="subtitle">for {{TECH_TAGLINE}}</div>
+      <div class="subtitle">for production-ready MariaDB development</div>
 
       <div class="badges">
-        <div class="badge badge-1">{{BADGE_1}}</div>
-        <div class="badge badge-2">{{BADGE_2}}</div>
-        <div class="badge badge-3">{{BADGE_3}}</div>
+        <div class="badge badge-1">MariaDB 10.6-12.x</div>
+        <div class="badge badge-2">Galera + JSON + Aria</div>
+        <div class="badge badge-3">TBD Skills</div>
       </div>
 
       <div class="versions">
-        {{VERSION_LINE}}
+        MariaDB 10.6 LTS <span class="sep">│</span> 10.11 LTS <span class="sep">│</span> 11.x <span class="sep">│</span> 12.x
       </div>
     </div>
 
@@ -250,10 +250,22 @@
           <div class="dot dot-red"></div>
           <div class="dot dot-yellow"></div>
           <div class="dot dot-green"></div>
-          <span class="code-filename">{{CODE_FILENAME}}</span>
+          <span class="code-filename">schema.sql</span>
         </div>
         <div class="code-body">
-          {{CODE_BODY}}
+<span class="comment">-- system-versioned table (10.3+)</span>
+<span class="keyword">CREATE TABLE</span> <span class="function">orders</span> (
+  <span class="function">id</span>          <span class="type">BIGINT</span> <span class="keyword">PRIMARY KEY</span>,
+  <span class="function">customer_id</span> <span class="type">BIGINT</span> <span class="keyword">NOT NULL</span>,
+  <span class="function">total</span>       <span class="type">DECIMAL</span>(<span class="string">12,2</span>),
+  <span class="function">meta</span>        <span class="type">JSON</span> <span class="keyword">CHECK</span> (<span class="function">JSON_VALID</span>(<span class="function">meta</span>))
+) <span class="keyword">WITH SYSTEM VERSIONING</span>
+  <span class="keyword">ENGINE</span><span class="operator">=</span><span class="type">InnoDB</span>;
+
+<span class="comment">-- query history as of a timestamp</span>
+<span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> <span class="function">orders</span>
+  <span class="keyword">FOR SYSTEM_TIME AS OF</span>
+  <span class="string">'2026-04-01 12:00:00'</span>;
           <span class="cursor"></span>
         </div>
       </div>
@@ -268,28 +280,3 @@
 </body>
 </html>
 
-<!--
-TEMPLATE VARIABLES:
-==================
-{{BG_COLOR}}         — Background color (e.g., #1A1A2E, #2A2A32)
-{{BRAND_PRIMARY}}    — Primary brand color (e.g., #61DAFB for React, #FFC131 for Tauri)
-{{BRAND_SECONDARY}}  — Secondary color (e.g., #3178C6 for TypeScript)
-{{BRAND_ACCENT}}     — Accent color (e.g., #A855F7 for purple)
-0      — Number of skills (e.g., 24, 27)
-{{TECH_TAGLINE}}     — Short tagline (e.g., "expert-level React 18 & 19 development")
-{{BADGE_1}}          — First badge text (e.g., "React 18 + 19")
-{{BADGE_2}}          — Second badge text (e.g., "TypeScript")
-{{BADGE_3}}          — Third badge text (e.g., "18 Hooks")
-{{VERSION_LINE}}     — Version info with HTML separators using <span class="sep">│</span>
-{{CODE_FILENAME}}    — Filename in code window titlebar (e.g., "App.tsx", "lib.rs")
-{{CODE_BODY}}        — HTML-formatted code snippet using span classes: .comment, .keyword, .function, .string, .operator, .type
-
-BRAND COLOR REFERENCE:
-====================
-React:    #61DAFB (cyan), #3178C6 (blue), #A855F7 (purple), bg: #1A1A2E
-Tauri:    #FFC131 (gold), #FF8C00 (orange), #24C8DB (cyan), bg: #2A2A32
-Docker:   #2496ED (blue), #1D63ED (dark blue), #34D399 (green), bg: #1A1A2E
-Vite:     #646CFF (purple), #FFC131 (yellow), #41D1FF (cyan), bg: #1A1A2E
-Next.js:  #FAFAF9 (white), #A1A1AA (gray), #0070F3 (blue), bg: #000000
-SolidJS:  #2C4F7C (blue), #335D92 (light blue), #446B9E (lightest), bg: #1A1A2E
--->

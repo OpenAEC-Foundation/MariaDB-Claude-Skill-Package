@@ -6,21 +6,21 @@ Each skill has a `description` field starting with "Use when...". Claude matches
 
 ## Typical workflows
 
-### Workflow 1 : {{COMMON_TASK_1}}
+### Workflow 1 : Schema design for a high-throughput table
 
 Ask Claude :
 
-> {{EXAMPLE_PROMPT_1}}
+> I need to design a 50M-row events table for time-series analytics. Pick the right MariaDB storage engine, partitioning strategy, and indexes.
 
-Claude will load : `mariadb-{{CAT}}-{{TOPIC}}` and produce code following the skill guidance.
+Claude will load : `mariadb-core-storage-engines` + `mariadb-syntax-indexing` and produce a schema with InnoDB ROW_FORMAT=DYNAMIC, range partitioning on `created_at`, and composite indexes ordered by selectivity.
 
-### Workflow 2 : {{COMMON_TASK_2}}
+### Workflow 2 : Diagnose a slow query
 
 Ask Claude :
 
-> {{EXAMPLE_PROMPT_2}}
+> This query takes 8 seconds on a 2M-row table : `SELECT * FROM orders WHERE customer_id = ? AND status IN (1,2,3) ORDER BY created_at DESC LIMIT 100`. Tell me why.
 
-Claude loads : `mariadb-{{CAT}}-{{TOPIC_2}}`.
+Claude loads : `mariadb-impl-query-optimization` + `mariadb-errors-slow-queries` and produces an EXPLAIN-driven analysis with composite-index recommendation respecting `(customer_id, status, created_at)` left-to-right rule.
 
 ## Discovering which skill applies
 
@@ -29,7 +29,7 @@ Browse [INDEX.md](INDEX.md) for the full catalog with descriptions and dependenc
 Or grep frontmatter Keywords :
 
 ```bash
-grep -r "Keywords:" skills/source/ | grep -i "{{YOUR_TERM}}"
+grep -r "Keywords:" skills/source/ | grep -i "galera"
 ```
 
 ## When multiple skills apply

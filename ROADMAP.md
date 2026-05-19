@@ -1,45 +1,47 @@
-# ROADMAP — MariaDB Skill Package
+# ROADMAP : MariaDB Skill Package
 
 ## Current Status
 
 | Phase | Description | Status | Progress |
 |-------|------------|--------|----------|
-| Phase 1 | Raw Masterplan | ✅ Infrastructure Ready | 50% |
-| Phase 2 | Deep Research (Vooronderzoek) | ⏳ Next | 0% |
-| Phase 3 | Masterplan Refinement | ⏳ Pending | 0% |
-| Phase 4 | Topic-Specific Research | ⏳ Pending | 0% |
-| Phase 5 | Skill Creation | ⏳ Pending | 0% |
-| Phase 6 | Validation | ⏳ Pending | 0% |
-| Phase 7 | Publication | ⏳ Pending | 0% |
+| Phase 1 | Raw Masterplan | DONE | 100% |
+| Phase 2 | Deep Research (Vooronderzoek) | IN PROGRESS | 0% |
+| Phase 3 | Masterplan Refinement | PENDING (user-checkpoint) | 0% |
+| Phase 4 | Topic-Specific Research | PENDING | 0% |
+| Phase 5 | Skill Creation | PENDING (tmux-orchestration) | 0% |
+| Phase 6 | Validation | PENDING (user-go) | 0% |
+| Phase 7 | Publication | PENDING (user-go) | 0% |
 
-**Overall Progress**: 7% (infrastructure created, methodology in place)
+**Overall Progress** : 15% (workspace bootstrap + raw masterplan complete, deep research starting)
 
 ## Next Steps
 
-1. Complete Phase 1: Create raw masterplan in `docs/masterplan/{{TECH_PREFIX}}-masterplan.md`
-   - Define preliminary skill inventory based on technology knowledge
-   - Estimate skill count per category
-   - Identify key API areas to cover
-2. Begin Phase 2: Deep Research
-   - Research MariaDB comprehensively using SOURCES.md approved URLs
-   - Create `docs/research/vooronderzoek-{{TECH_PREFIX}}.md`
-   - Use WebFetch for latest official documentation
+1. **Phase 2 : Deep Research** : dispatch 3 opus agents in parallel against the 3 topic-clusters defined in `docs/masterplan/mariadb-masterplan.md` § Next : Phase 2 Deep Research. Merge outputs into `docs/research/vooronderzoek-mariadb.md` (>= 2000 words).
+2. **Phase 3 : Masterplan Refinement** : compose Refinement Decisions table (min 1 MERGE / DROP / SPLIT), Execution Plan batches, per-skill agent prompts. STOP for user-checkpoint.
+3. **Phase 4 + 5** : tmux-orchestration with 3 skill-builder workers (only after user-go on Phase 3).
+4. **Phase 6 + 7** : validation + publication (only after user-go on Phase 5 end).
 
 ## Skill Summary
 
 | Category | Estimated | Created | Validated |
 |----------|-----------|---------|-----------|
-| syntax/ | TBD | 0 | 0 |
-| impl/ | TBD | 0 | 0 |
-| errors/ | TBD | 0 | 0 |
-| core/ | TBD | 0 | 0 |
-| agents/ | TBD | 0 | 0 |
-| **Total** | **TBD** | **0** | **0** |
+| core/ | 5 | 0 | 0 |
+| syntax/ | 8 | 0 | 0 |
+| impl/ | 7 | 0 | 0 |
+| errors/ | 5 | 0 | 0 |
+| agents/ | 3 | 0 | 0 |
+| **Total** | **28** | **0** | **0** |
+
+Estimates from raw masterplan. Phase 3 refinement may merge / drop / split.
 
 ## Changelog
 
-### Phase 1 — Infrastructure (2026-05-19)
-- Repository structure created
-- Core files initialized (CLAUDE.md, ROADMAP.md, REQUIREMENTS.md, DECISIONS.md, SOURCES.md, WAY_OF_WORK.md, LESSONS.md, CHANGELOG.md)
-- Skill category directories created
-- Ready for raw masterplan creation and deep research
+### Phase 1 : Raw Masterplan + Workspace Bootstrap (2026-05-19)
+
+- Repository structure created (skills/source/, docs/masterplan/, docs/research/, agents/, .github/workflows/)
+- Core files initialized (CLAUDE.md, REQUIREMENTS.md, DECISIONS.md, SOURCES.md, WAY_OF_WORK.md, LESSONS.md, CHANGELOG.md, README.md, INDEX.md, HANDOFF.md, OPEN-QUESTIONS.md, USAGE.md, INSTALL.md, START-PROMPT.md)
+- All template placeholders replaced with MariaDB-specific values across 10 files
+- Raw masterplan written : 28 planned skills across 5 categories with scope-bullet per skill
+- SOURCES.md populated with verified MariaDB official sources (KB, GitHub, release-notes, mariadb.org, Galera, JIRA, MaxScale)
+- Social preview banner customized with MariaDB brand colors and SQL code-sample
+- Ready for Phase 2 deep research

@@ -33,7 +33,7 @@ npx skills add @openaec/mariadb-claude-skill-package
 
 After install, ask Claude :
 
-> {{VERIFICATION_PROMPT}}
+> Welcome a MariaDB schema design question (e.g. "design a multi-tenant schema for an ERPNext-style app") and verify Claude proposes the correct table-naming convention, InnoDB engine choice, and indexing strategy.
 
 If skill activates : install successful. If not : check `~/.claude/skills/mariadb/` exists and contains category-folders.
 
@@ -41,4 +41,4 @@ If skill activates : install successful. If not : check `~/.claude/skills/mariad
 
 - MariaDB 10.6-LTS,10.11-LTS,11.x,12.x
 - Claude Code (latest)
-- {{ADDITIONAL_REQUIREMENTS}}
+- MariaDB CLI (`mariadb` or `mysql` client) reachable from $PATH for running examples locally.

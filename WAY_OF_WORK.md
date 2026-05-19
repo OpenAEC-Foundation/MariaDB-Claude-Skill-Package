@@ -13,13 +13,13 @@ This project follows the 7-phase research-first methodology proven in three prod
 - Define project scope and MariaDB coverage areas
 - Create preliminary skill inventory (estimate, not final)
 - Set up repository structure and core files
-- Output: `docs/masterplan/{{TECH_PREFIX}}-masterplan.md`, all core files
+- Output: `docs/masterplan/mariadb-masterplan.md`, all core files
 
 ### Phase 2: Deep Research (Vooronderzoek)
 - One comprehensive research document for MariaDB
 - Cover: API surface, architecture, patterns, anti-patterns, version differences
 - Minimum 2000 words, verify with WebFetch
-- Output: `docs/research/vooronderzoek-{{TECH_PREFIX}}.md`
+- Output: `docs/research/vooronderzoek-mariadb.md`
 
 ### Phase 3: Masterplan Refinement
 - Review research against preliminary inventory
@@ -38,7 +38,7 @@ This project follows the 7-phase research-first methodology proven in three prod
 - Transform research into deterministic skills
 - Execute in batches of 3 agents via Claude Code Agent tool
 - Quality gate after every batch
-- Output: `skills/source/{{TECH_PREFIX}}-{category}/{skill-name}/`
+- Output: `skills/source/mariadb-{category}/{skill-name}/`
 
 ### Phase 6: Validation
 - Structural, content, cross-reference, and functional validation
@@ -63,7 +63,7 @@ skill-name/
 ```
 
 ### Naming Convention
-- `{{TECH_PREFIX}}-{category}-{topic}`
+- `mariadb-{category}-{topic}`
 - Categories: syntax, impl, errors, core, agents
 
 ## Content Standards

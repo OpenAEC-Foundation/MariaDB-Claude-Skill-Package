@@ -18,16 +18,25 @@ Built on the [Agent Skills](https://agentskills.org) open standard. Discoverable
 
 Without skills, Claude lacks deterministic guidance for MariaDB patterns:
 
-```{{LANGUAGE}}
-// Wrong : {{WRONG_PATTERN_DESCRIPTION}}
-{{WRONG_CODE_EXAMPLE}}
+```sql
+-- Wrong : assumes MariaDB JSON is binary like MySQL 5.7+
+-- In MariaDB, JSON is an alias for LONGTEXT — no native binary storage,
+-- no validation unless you add a CHECK constraint.
+ALTER TABLE products ADD COLUMN meta JSON;
+INSERT INTO products (meta) VALUES ('not even valid json');  -- silently accepted
 ```
 
 With this skill package, Claude produces correct patterns:
 
-```{{LANGUAGE}}
-// Correct : {{CORRECT_PATTERN_DESCRIPTION}}
-{{CORRECT_CODE_EXAMPLE}}
+```sql
+-- Correct : enforce JSON validity with CHECK constraint (MariaDB-specific)
+-- and use the dedicated JSON_* functions which work on the LONGTEXT storage.
+ALTER TABLE products
+  ADD COLUMN meta JSON CHECK (JSON_VALID(meta));
+
+-- Functional indexing on JSON path (MariaDB 10.3+) avoids full table scans
+ALTER TABLE products
+  ADD INDEX idx_brand ((JSON_VALUE(meta, '$.brand')));
 ```
 
 ## What's Inside

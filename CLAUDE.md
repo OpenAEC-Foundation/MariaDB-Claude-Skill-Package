@@ -15,22 +15,22 @@
 
 **Quality bar**: Every skill must be deterministic (ALWAYS/NEVER language), English-only, <500 lines, verified against official docs via WebFetch. No hallucinated APIs. No vague language.
 
-**End state**: A published GitHub repo at `https://github.com/OpenAEC-Foundation/{{GITHUB_REPO_NAME}}` with:
+**End state**: A published GitHub repo at `https://github.com/OpenAEC-Foundation/MariaDB-Claude-Skill-Package` with:
 - All skills created, validated, and organized
 - INDEX.md with complete skill catalog
 - README.md with installation instructions and skill table
 - Social preview banner (1280x640px) with OpenAEC branding
 - Release tag (v1.0.0) and GitHub release
-- Repository topics set (claude, skills, {{TECH_TOPIC}}, ai, deterministic, openaec)
+- Repository topics set (claude, skills, mariadb, ai, deterministic, openaec)
 
 **Reflection checkpoint**: After EVERY phase/batch, pause and ask: Do we need more research? Should we revise the plan? Are we meeting quality standards? Update core files before proceeding.
 
-**Consolidate lessons**: Any workflow-level insight (not tech-specific) should also be noted for consolidation back to the Workflow Template repo (`{{WORKFLOW_TEMPLATE_PATH}}` : default `/home/freek/GitHub/Skill-Package-Workflow-Template`).
+**Consolidate lessons**: Any workflow-level insight (not tech-specific) should also be noted for consolidation back to the Workflow Template repo (`/home/freek/GitHub/Skill-Package-Workflow-Template` : default `/home/freek/GitHub/Skill-Package-Workflow-Template`).
 
 **Self-audit**: At Phase 6 or any time quality is in question, use Protocol P-010 to run a self-audit against the methodology. The audit template and CI/CD pipeline are in the Workflow Template repo.
 
 **Masterplan template**: When creating your masterplan in Phase 3, follow the EXACT structure from:
-- Template: `{{WORKFLOW_TEMPLATE_PATH}}/templates/masterplan.md.template`
+- Template: `/home/freek/GitHub/Skill-Package-Workflow-Template/templates/masterplan.md.template`
 - Proven example (single-tech, 27 skills, 10 batches, one session) : https://github.com/OpenAEC-Foundation/Tauri-2-Claude-Skill-Package/blob/main/docs/masterplan/tauri-masterplan.md
 - Proven example (single-tech, 21 skills, 7 batches) : https://github.com/OpenAEC-Foundation/n8n-Claude-Skill-Package/blob/main/docs/masterplan/n8n-masterplan.md
 - Proven example (multi-tech, 73 skills, 13+ batches) : https://github.com/OpenAEC-Foundation/Blender-Bonsai-ifcOpenshell-Sverchok-Claude-Skill-Package/blob/main/docs/masterplan/masterplan.md
@@ -45,8 +45,8 @@ The masterplan must include: refinement decisions table, skill inventory with ex
 ---
 
 ## Project Identity
-- MariaDB skill package for Claude — {{TECH_DESCRIPTION}}
-- Technology: {{TECH_NAME}} {{TECH_VERSIONS}}
+- MariaDB skill package for Claude — open-source relational database (MySQL-compatible drop-in) with extended features: Aria engine, system-versioned tables, Galera multi-master, dynamic columns, advanced JSON.
+- Technology: MariaDB 10.6-LTS, 10.11-LTS, 11.x, 12.x
 - Methodology: 7-phase research-first development (proven in ERPNext, Blender-Bonsai, and Tauri packages)
 - Workflow reference: https://github.com/OpenAEC-Foundation/Skill-Package-Workflow-Template
 - Reference projects:
@@ -64,7 +64,7 @@ The masterplan must include: refinement decisions table, skill inventory with ex
 | SOURCES.md | References | Official documentation URLs, verification rules, last-verified dates |
 | WAY_OF_WORK.md | Methodology | 7-phase process, skill structure, content standards |
 | CHANGELOG.md | History | Version history in Keep a Changelog format |
-| docs/masterplan/{{TECH_PREFIX}}-masterplan.md | Planning | Execution plan with phases, prompts, dependencies |
+| docs/masterplan/mariadb-masterplan.md | Planning | Execution plan with phases, prompts, dependencies |
 | README.md | Public | GitHub landing page |
 | HANDOFF.md | Overdracht | Quick-start guide for new sessions, batch volgorde, bijzonderheden |
 | INDEX.md | Catalog | Complete skill catalog with descriptions and dependency graph |
@@ -72,16 +72,16 @@ The masterplan must include: refinement decisions table, skill inventory with ex
 ## Technology Scope
 | Tech | Prefix | Versions |
 |------|--------|----------|
-| {{TECH_NAME}} | {{TECH_PREFIX}}- | {{TECH_VERSIONS}} |
+| MariaDB | mariadb- | 10.6-LTS, 10.11-LTS, 11.x, 12.x |
 
 ## Skill Categories
 | Category | Purpose | Naming |
 |----------|---------|--------|
-| syntax/ | API syntax, code patterns | {{TECH_PREFIX}}-syntax-{topic} |
-| impl/ | Development workflows | {{TECH_PREFIX}}-impl-{topic} |
-| errors/ | Error handling patterns | {{TECH_PREFIX}}-errors-{topic} |
-| core/ | Cross-cutting concerns, architecture | {{TECH_PREFIX}}-core-{topic} |
-| agents/ | Intelligent orchestration | {{TECH_PREFIX}}-agents-{topic} |
+| syntax/ | API syntax, code patterns | mariadb-syntax-{topic} |
+| impl/ | Development workflows | mariadb-impl-{topic} |
+| errors/ | Error handling patterns | mariadb-errors-{topic} |
+| core/ | Cross-cutting concerns, architecture | mariadb-core-{topic} |
+| agents/ | Intelligent orchestration | mariadb-agents-{topic} |
 
 ## Repository Structure
 ```
@@ -96,15 +96,15 @@ project-root/
 ├── CHANGELOG.md                 # Version history
 ├── README.md                    # GitHub landing page
 ├── docs/
-│   ├── masterplan/              # {{TECH_PREFIX}}-masterplan.md
-│   └── research/                # vooronderzoek-{{TECH_PREFIX}}.md, topic-research/, fragments/
+│   ├── masterplan/              # mariadb-masterplan.md
+│   └── research/                # vooronderzoek-mariadb.md, topic-research/, fragments/
 └── skills/
     └── source/
-        ├── {{TECH_PREFIX}}-syntax/
-        ├── {{TECH_PREFIX}}-impl/
-        ├── {{TECH_PREFIX}}-errors/
-        ├── {{TECH_PREFIX}}-core/
-        └── {{TECH_PREFIX}}-agents/
+        ├── mariadb-syntax/
+        ├── mariadb-impl/
+        ├── mariadb-errors/
+        ├── mariadb-core/
+        └── mariadb-agents/
 ```
 
 ---
@@ -140,7 +140,7 @@ EVERY session begins with this sequence:
 2. **Read LESSONS.md** — Check recent lessons that may affect your work
 3. **Read DECISIONS.md** — Know all architectural decisions (D-001+) and their constraints
 4. **Read REQUIREMENTS.md** — Understand quality guarantees and per-area requirements
-5. **Read docs/masterplan/{{TECH_PREFIX}}-masterplan.md** — Know the execution plan and current phase details
+5. **Read docs/masterplan/mariadb-masterplan.md** — Know the execution plan and current phase details
 6. **If researching**: Read **SOURCES.md** — Know approved sources, verification rules
 7. **If creating skills**: Read **WAY_OF_WORK.md** — Know skill structure, content standards, naming
 8. Identify next action from ROADMAP.md "Next Steps"
@@ -247,7 +247,7 @@ If validation fails:
 3. If new architectural decisions emerge, record in **DECISIONS.md** (numbered D-XXX)
 
 ### Research output location:
-- Vooronderzoek: `docs/research/vooronderzoek-{{TECH_PREFIX}}.md`
+- Vooronderzoek: `docs/research/vooronderzoek-mariadb.md`
 - Topic research: `docs/research/topic-research/{skill-name}-research.md`
 - Research fragments: `docs/research/fragments/`
 
@@ -261,14 +261,14 @@ Defined in detail in **WAY_OF_WORK.md** and **REQUIREMENTS.md**. Quick reference
 - SKILL.md < 500 lines (per **DECISIONS.md** D-003), heavy content in references/
 - YAML frontmatter: name + description with trigger words
 - Structure: Quick Reference > Decision Trees > Patterns > Reference Links
-- Naming: `{{TECH_PREFIX}}-{category}-{topic}`
+- Naming: `mariadb-{category}-{topic}`
 - Verify against **SOURCES.md** approved URLs only
 
 ### SKILL.md YAML Frontmatter — Required Format
 
 ```yaml
 ---
-name: mariadb-{{CATEGORY}}-{{TOPIC}}
+name: mariadb-syntax-json-functions
 description: >
   Use when [specific trigger scenario].
   Prevents the [common mistake / anti-pattern].
@@ -348,15 +348,15 @@ Agents are spawned via the Agent tool within Claude Code. Results are collected 
 ### Repository Setup:
 ```bash
 # Create remote under OpenAEC Foundation
-gh repo create OpenAEC-Foundation/{{GITHUB_REPO_NAME}} --public \
+gh repo create OpenAEC-Foundation/MariaDB-Claude-Skill-Package --public \
   --description "Deterministic Claude skills for MariaDB"
 
 # Set remote and push
-git remote add origin https://github.com/OpenAEC-Foundation/{{GITHUB_REPO_NAME}}.git
+git remote add origin https://github.com/OpenAEC-Foundation/MariaDB-Claude-Skill-Package.git
 git push -u origin main
 
 # Set topics
-gh repo edit --add-topic claude,skills,{{TECH_TOPIC}},ai,deterministic,openaec
+gh repo edit --add-topic claude,skills,mariadb,ai,deterministic,openaec
 ```
 
 ### Social Preview Banner:
@@ -383,11 +383,11 @@ When a skill package reaches Phase 6 (Validation) or when requested, run a self-
 
 ### How to audit:
 1. Read the methodology audit template from the Workflow Template repo:
-   `{{WORKFLOW_TEMPLATE_PATH}}/templates/methodology-audit.md.template`
+   `/home/freek/GitHub/Skill-Package-Workflow-Template/templates/methodology-audit.md.template`
 2. Read the repo status overview for cross-package context:
-   `{{WORKFLOW_TEMPLATE_PATH}}/REPO-STATUS-AUDIT.md`
+   `/home/freek/GitHub/Skill-Package-Workflow-Template/REPO-STATUS-AUDIT.md`
 3. Or use the ready-made audit prompt:
-   `{{WORKFLOW_TEMPLATE_PATH}}/AUDIT-START-PROMPT.md`
+   `/home/freek/GitHub/Skill-Package-Workflow-Template/AUDIT-START-PROMPT.md`
 
 ### CI/CD Automated Validation:
 Skill packages with GitHub remotes automatically run quality checks on push/PR via:

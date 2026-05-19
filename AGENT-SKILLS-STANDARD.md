@@ -8,7 +8,7 @@ Every SKILL.md MUST contain :
 
 ```yaml
 ---
-name: mariadb-{{CATEGORY}}-{{TOPIC}}
+name: mariadb-syntax-json-functions
 description: >
   Use when [trigger scenario].
   Prevents [anti-pattern].
