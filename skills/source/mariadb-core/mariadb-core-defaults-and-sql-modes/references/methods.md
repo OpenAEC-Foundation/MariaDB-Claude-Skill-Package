@@ -72,10 +72,18 @@ Rotation requires DROP + CREATE under the new session sql_mode.
 
 ## Default Character Set and Collation
 
-| Version | character_set_server | collation_server |
-|---|---|---|
-| 5.5 to 11.5 (incl. 10.6 LTS, 10.11 LTS) | `latin1` | `latin1_swedish_ci` |
-| 11.6 and later | `utf8mb4` | `utf8mb4_uca1400_ai_ci` |
+There are TWO separate default-changes, one release apart. Do not conflate them :
+
+- FACT A : the server-wide default charset `character_set_server` flipped from `latin1` to `utf8mb4` in **MariaDB 11.6**.
+- FACT B : the default collation OF the `utf8mb4` charset flipped from `utf8mb4_general_ci` to `utf8mb4_uca1400_ai_ci` in **MariaDB 11.5** (one release earlier).
+
+| Version | character_set_server | collation_server | Default collation of the utf8mb4 charset |
+|---|---|---|---|
+| 5.5 to 11.4 (incl. 10.6 LTS, 10.11 LTS) | `latin1` | `latin1_swedish_ci` | `utf8mb4_general_ci` |
+| 11.5 | `latin1` | `latin1_swedish_ci` | `utf8mb4_uca1400_ai_ci` |
+| 11.6 and later | `utf8mb4` | `utf8mb4_uca1400_ai_ci` | `utf8mb4_uca1400_ai_ci` |
+
+The effective `collation_server` value only becomes `utf8mb4_uca1400_ai_ci` in 11.6, because that is when the server charset itself becomes `utf8mb4`. In 11.5 the server charset is still `latin1`, so `collation_server` is still `latin1_swedish_ci` ; only an explicit `CHARSET=utf8mb4` table or column picks up the new `utf8mb4_uca1400_ai_ci` collation default on 11.5.
 
 Distro packages (Debian, Ubuntu) ship `/etc/mysql/mariadb.conf.d/50-server.cnf` overrides that set `character-set-server=utf8mb4` regardless of upstream default. ALWAYS verify with `SELECT @@character_set_server, @@collation_server;`.
 
@@ -88,7 +96,7 @@ Common collations on `utf8mb4` :
 
 | Collation | Sort order | Accent / case |
 |---|---|---|
-| `utf8mb4_uca1400_ai_ci` | Unicode CLDR 14.0.0 | accent-insensitive, case-insensitive (default 11.6+) |
+| `utf8mb4_uca1400_ai_ci` | Unicode CLDR 14.0.0 | accent-insensitive, case-insensitive (default collation of the utf8mb4 charset since 11.5) |
 | `utf8mb4_uca1400_as_cs` | Unicode CLDR 14.0.0 | accent-sensitive, case-sensitive |
 | `utf8mb4_bin` | binary | byte-for-byte ; fastest, least useful for human text |
 | `utf8mb4_general_ci` | legacy MySQL | accent-insensitive ; do NOT use for new schemas (incorrect German sharp s, Turkish dotted i) |

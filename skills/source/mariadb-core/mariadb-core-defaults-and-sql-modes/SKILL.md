@@ -3,7 +3,7 @@ name: mariadb-core-defaults-and-sql-modes
 description: >
   Use when investigating "my query worked yesterday and now doesn't", upgrading between LTS releases, migrating from MySQL, or setting up a new MariaDB instance with explicit sql_mode and charset.
   Prevents the common mistake of relying on implicit defaults that change between versions, mixing sql_mode-strict with legacy data, or assuming utf8 means utf8mb4.
-  Covers sql_mode per version (STRICT_TRANS_TABLES, ANSI_QUOTES, NO_ZERO_DATE, etc.), default charset shift to utf8mb4_uca1400 in 11.6+, default authentication plug-in evolution, default storage engine (InnoDB), default binlog format MIXED since 10.2.3, my.cnf defaults that break apps on upgrade.
+  Covers sql_mode per version (STRICT_TRANS_TABLES, ANSI_QUOTES, NO_ZERO_DATE, etc.), default server charset_set_server shift from latin1 to utf8mb4 in 11.6, default utf8mb4 collation shift to utf8mb4_uca1400_ai_ci in 11.5, default authentication plug-in evolution, default storage engine (InnoDB), default binlog format MIXED since 10.2.3, my.cnf defaults that break apps on upgrade.
   Keywords: mariadb defaults, sql_mode, STRICT_TRANS_TABLES, ANSI_QUOTES, default charset, utf8mb4, utf8mb4_uca1400, default authentication, default storage engine, my.cnf defaults, why does this query fail now, upgrade broke my app, sql mode change between versions, NO_ZERO_DATE, ONLY_FULL_GROUP_BY, ER_BAD_FIELD_ERROR after upgrade, sync_binlog, binlog_format MIXED, lower_case_table_names, ed25519
 license: MIT
 compatibility: "Designed for Claude Code. Requires MariaDB 10.6-LTS, 10.11-LTS, 11.x, 12.x."
@@ -21,7 +21,7 @@ How implicit server defaults shift between MariaDB versions, why an unchanged qu
 - MariaDB `sql_mode` default differs per LTS line ; ALWAYS pin `sql_mode` explicitly in `[mysqld]` for production.
 - 10.2.4+ default `sql_mode` : `STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION`. Same string applies to 10.6, 10.11, 11.x, 12.x stock builds.
 - `utf8` is a 3-byte alias for `utf8mb3`. Use `utf8mb4` for full Unicode (emoji, supplementary planes above U+FFFF).
-- Default charset is `latin1` / `latin1_swedish_ci` until 11.5 ; flipped to `utf8mb4` / `utf8mb4_uca1400_ai_ci` in 11.6+. 10.6 LTS and 10.11 LTS stock builds still default to `latin1`. Debian / Ubuntu distro packages override to `utf8mb4`.
+- TWO SEPARATE default changes : (A) the server default charset `character_set_server` flipped from `latin1` to `utf8mb4` in 11.6 ; (B) the default collation OF the `utf8mb4` charset flipped from `utf8mb4_general_ci` to `utf8mb4_uca1400_ai_ci` one release earlier, in 11.5. Because the server charset stayed `latin1` through 11.5, the effective `collation_server` only becomes `utf8mb4_uca1400_ai_ci` in 11.6 (when the server charset itself becomes `utf8mb4`). 10.6 LTS and 10.11 LTS stock builds still default to `latin1` / `latin1_swedish_ci`. Debian / Ubuntu distro packages override to `utf8mb4`.
 - Default `binlog_format` is `MIXED` since 10.2.3 (NOT `ROW`).
 - Default `sync_binlog=0` trades durability for write throughput ; set `sync_binlog=1` for crash-safe binlog on a primary.
 - Default `innodb_flush_log_at_trx_commit=1` (full ACID).
@@ -117,7 +117,7 @@ ALWAYS reload (`systemctl restart mariadb`) after editing option files ; `SET GL
 |---|---|---|
 | `sql_mode` | `STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION` (10.2.4+) | Inserts that worked on 10.1 now fail with `Data too long`, `Incorrect string value`, `Out of range value` |
 | `character_set_server` | `latin1` (< 11.6) / `utf8mb4` (11.6+) | Tables created without explicit CHARSET lock to latin1, breaking emoji |
-| `collation_server` | `latin1_swedish_ci` / `utf8mb4_uca1400_ai_ci` | Cross-table JOIN raises `Illegal mix of collations` |
+| `collation_server` | `latin1_swedish_ci` (< 11.6) / `utf8mb4_uca1400_ai_ci` (11.6+) | Follows `character_set_server` ; the default collation of `utf8mb4` itself changed from `utf8mb4_general_ci` to `utf8mb4_uca1400_ai_ci` in 11.5. Cross-table JOIN raises `Illegal mix of collations` |
 | `binlog_format` | `MIXED` (10.2.3+) | Statement-based subset can drift on non-deterministic UDFs ; row-based applies cleanly |
 | `sync_binlog` | `0` | Crash-test reveals up to several seconds of binlog loss |
 | `innodb_flush_log_at_trx_commit` | `1` | Setting `2` for throughput silently loses 1s on OS crash |

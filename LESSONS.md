@@ -50,12 +50,15 @@ Observations and findings captured during MariaDB skill package development.
 
 ---
 
-## L-010 : utf8mb4_uca1400_ai_ci is default since 11.5, not 11.6 (2026-05-20)
+## L-010 : MariaDB charset-default and collation-default changed in DIFFERENT versions (2026-05-20)
 
-- **Context** : Batch B-10 E-05 encoding-and-collation skill, WebFetch against mariadb.com/kb supported-character-sets-and-collations.
-- **Observation** : Default utf8mb4 collation is `utf8mb4_general_ci` through 11.4, switches to `utf8mb4_uca1400_ai_ci` from 11.5+. The 184 UCA-14.0.0 collations were added in 10.10. Earlier batches (B-02 C-06 defaults-and-sql-modes) cited "11.6" for this shift.
-- **Impact** : Minor version-precision inconsistency between mariadb-core-defaults-and-sql-modes (says 11.6) and mariadb-errors-encoding-and-collation (says 11.5). Phase 6 polish-pass must reconcile to 11.5 (the WebFetch-verified value).
-- **Rule** : When two skills cite different introduction-versions for the same fact, the WebFetch-verified one wins ; flag for Phase-6 cross-skill consistency reconciliation.
+- **Context** : Batch B-10 surfaced an apparent conflict ; resolved in Phase 6 cross-skill reconciliation.
+- **Resolution (WebFetch-verified against 11.5 + 11.6 release notes)** : these are TWO separate facts, one release apart :
+  - **Fact A** : default `character_set_server` / `character_set_database` flipped `latin1` to `utf8mb4` in **MariaDB 11.6**.
+  - **Fact B** : default collation OF the `utf8mb4` charset changed `utf8mb4_general_ci` to `utf8mb4_uca1400_ai_ci` in **MariaDB 11.5**. The uca1400 collation family itself was added in 10.10.
+  - Subtlety : because the server charset stayed `latin1` through 11.5, `collation_server` only effectively becomes uca1400 in 11.6.
+- **Impact** : `mariadb-core-defaults-and-sql-modes` had conflated the two (claimed collation flipped in 11.6). Fixed ; version-matrix corrected too.
+- **Rule** : Do not conflate "charset default change" with "collation default change". They are distinct system variables and changed in distinct versions. WebFetch the per-version release notes, not summary tables.
 
 ---
 

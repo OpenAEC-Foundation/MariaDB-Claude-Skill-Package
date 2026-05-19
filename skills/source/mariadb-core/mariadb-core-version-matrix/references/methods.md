@@ -33,13 +33,13 @@ Each interim minor receives ~1 year of community bug-fix support and then EOL.
 | 10.7 | 2022-02 | EOL | Replaced by 10.11 LTS |
 | 10.8 | 2022-05 | EOL | Replaced by 10.11 LTS ; introduced descending indexes |
 | 10.9 | 2022-08 | EOL | Replaced by 10.11 LTS ; auto-partition by SYSTEM_TIME INTERVAL |
-| 10.10 | 2022-11 | EOL | Replaced by 10.11 LTS |
+| 10.10 | 2022-11 | EOL | Replaced by 10.11 LTS ; added the utf8mb4_uca1400 collation family (184 UCA-14.0.0 collations) |
 | 11.0 | 2023-06 | EOL | Query cache removed, optimizer rewrite |
 | 11.1 | 2023-08 | EOL | Online ALTER for partitioned tables |
 | 11.2 | 2023-11 | EOL | RAND_BYTES, PROC_HANDLER_DIAGNOSTICS |
 | 11.3 | 2024-02 | EOL | Vector preview, SHOW ANALYZE FORMAT=JSON |
-| 11.5 | 2024-08 | EOL | Bundled vector functions (preview) |
-| 11.6 | 2024-11 | EOL | Default charset utf8mb4 on stock build |
+| 11.5 | 2024-08 | EOL | Bundled vector functions (preview) ; default collation of the utf8mb4 charset changed to utf8mb4_uca1400_ai_ci |
+| 11.6 | 2024-11 | EOL | Default character_set_server changed from latin1 to utf8mb4 on stock build |
 | 11.7 | 2025-02 | EOL | Vector indexes GA preview |
 | 12.0 | 2025-08 | Interim | file_key_management_use_pbkdf2 ; wait for LTS designation |
 | 12.x next | TBD | Interim | Dev only ; future LTS |
@@ -96,7 +96,7 @@ the plus marks the feature as backported to the LTS baseline.
 | Descending indexes (CREATE INDEX ... DESC) | 10.8+ | Avoids backward scan for ORDER BY col DESC | KB `descending-indexes` |
 | INTERVAL ... AUTO partition by SYSTEM_TIME | 10.9.1+ | Auto-partition creation for history | KB `system-versioned-tables` |
 | system_versioning_insert_history variable | 10.11+ | Allows direct insertion of history rows | KB `system-versioned-tables` |
-| utf8mb4_uca1400 collation family | 10.11+ | Unicode 14.0 ; default on 11.6+ stock builds | KB `unicode-collation-algorithm` |
+| utf8mb4_uca1400 collation family | 10.10+ | Unicode 14.0 ; becomes the default collation of the utf8mb4 charset in 11.5 ; effective `collation_server` default on 11.6+ stock builds once `character_set_server` itself becomes utf8mb4 | KB `unicode-collation-algorithm` |
 | Query cache REMOVED | 11.0+ | Deprecated since 10.1.7 ; gone from 11.0 onwards | KB `query-cache` |
 | InnoDB undo-tablespace consolidation | 11.0+ | innodb_undo_tablespaces removed | KB `innodb-undo-log` |
 | Default charset utf8mb4 on stock build | 11.6+ | LTS 10.6 / 10.11 still ship latin1 default on stock | KB `character-set-and-collation-overview` |
@@ -119,9 +119,11 @@ the plus marks the feature as backported to the LTS baseline.
 
 ### 10.6 to 10.11
 
-- **utf8mb4_uca1400 collations introduced** as recommended default. Existing tables
-  on `utf8mb4_general_ci` or `utf8mb4_unicode_ci` keep working ; new objects should
-  use `utf8mb4_uca1400_ai_ci`. Cross-collation joins emit `Illegal mix of collations`.
+- **utf8mb4_uca1400 collations introduced (10.10)** as the recommended choice ; they
+  do NOT become the default collation of the utf8mb4 charset until 11.5. Existing
+  tables on `utf8mb4_general_ci` or `utf8mb4_unicode_ci` keep working ; new objects
+  should use `utf8mb4_uca1400_ai_ci`. Cross-collation joins emit `Illegal mix of
+  collations`.
 - **SUPER privilege split** into fine-grained privileges (BINLOG ADMIN, REPLICATION
   CLIENT ADMIN, FEDERATED ADMIN, etc.) progressively from 10.5 ; 10.11 completes the
   matrix. Scripts using `GRANT SUPER ON *.* TO ...` should be reviewed.
