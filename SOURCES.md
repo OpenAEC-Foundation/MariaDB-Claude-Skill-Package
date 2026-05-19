@@ -8,10 +8,12 @@ All skill content MUST be verified against these approved sources. No unverified
 
 | Source | URL | Type | Last Verified |
 |--------|-----|------|---------------|
-| MariaDB Knowledge Base | https://mariadb.com/kb/ | Official Documentation | 2026-05-19 |
+| MariaDB Knowledge Base (legacy path) | https://mariadb.com/kb/en/ | Official Documentation | 2026-05-19 |
+| MariaDB Documentation (modern path) | https://mariadb.com/docs/server/ | Official Documentation (post-restructure) | 2026-05-19 |
 | MariaDB Server GitHub | https://github.com/MariaDB/server | Source code (canonical) | 2026-05-19 |
 | MariaDB Release Notes | https://mariadb.com/kb/en/release-notes/ | Official changelogs per version | 2026-05-19 |
 | MariaDB.org Documentation | https://mariadb.org/documentation/ | Official Foundation docs | 2026-05-19 |
+| MariaDB LLM-friendly dump | https://mariadb.com/docs/llms-full.txt | Aggregated full-text reference | 2026-05-19 |
 
 ### Secondary Sources (use only when primary is insufficient)
 
